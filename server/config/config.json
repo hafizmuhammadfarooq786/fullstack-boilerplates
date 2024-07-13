@@ -1,0 +1,15 @@
+{
+  "development": {
+    "username": "travelzoak_owner",
+    "password": "WVpcoM9eH1CT",
+    "database": "sample",
+    "host": "ep-proud-mode-a5ekf8sl.us-east-2.aws.neon.tech",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}

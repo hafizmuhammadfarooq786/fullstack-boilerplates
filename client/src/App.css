@@ -1,0 +1,122 @@
+html, body{
+  margin: 0px;
+  padding: 0px;
+}
+.App {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background: #FFFFFF;
+}
+
+.App .card{
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.App .card .form{
+  width: 520px;
+}
+
+.App .form_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 16px 0;
+}
+
+.App .form_container label{
+  font-size: 16px;
+  text-align: left;
+  color: rgba(30, 127, 229, 0.981);
+  margin-bottom: 8px;
+}
+
+.App .form_container input{
+  font-size: 16px;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid #000000;
+  padding: 16px ;
+  margin: 8px 0;
+  color: #000000;
+  font-family: inherit;
+}
+
+.App table{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+  max-width: 800px;
+  text-align: center;
+}
+
+.App table tbody td,
+.App table thead th{
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #000000;
+}
+
+
+button {
+  outline: none;
+  border: none;
+  color: #FFFFFF;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.edit_button{
+  background: rgb(67, 170, 67);
+}
+
+.delete_button{
+  background: rgb(219, 10, 10);
+}
+
+.submit_button{
+  background: rgba(30, 127, 229, 0.981);
+}
+
+.submit_button_processing{
+  background: rgba(30, 127, 229, 0.5);;
+}
+
+.submit_button, .submit_button_processing{
+  padding: 16px 0;
+}
+
+.App .modal{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #00000050;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.App .modal .card{
+  background: #FFFFFF;
+  z-index: 100;
+  width: 520px;
+  min-width: 520px;
+  max-width: 520px;
+}
