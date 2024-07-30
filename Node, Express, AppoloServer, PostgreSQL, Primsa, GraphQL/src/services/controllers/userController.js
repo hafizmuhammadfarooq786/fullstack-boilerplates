@@ -1,15 +1,16 @@
 const bcrypt = require('bcrypt');
-const User = require('../models/user');
+const {createUser, getUserByEmail, getAllUsers, getUserById,  updateUserDetails, deleteUserDetails} = require("../resolvers/userResolver");
 
+// User Signup
 const signup = async (name, email, password) => {
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await User.create({
-      name,
-      email,
-      password: hashedPassword,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+    const user = await createUser({
+      data: {
+        name,
+        email,
+        password: hashedPassword,
+      }
     });
 
     if (!user) {
@@ -21,9 +22,10 @@ const signup = async (name, email, password) => {
   }
 };
 
+// User Login
 const login = async (email, password) => {
   try {
-    const user = await User.findOne({ where: { email } });
+    const user = await getUserByEmail(email);
     if (!user || !await bcrypt.compare(password, user.password)) {
       throw new Error("Invalid email or password");
     }
@@ -34,37 +36,39 @@ const login = async (email, password) => {
   }
 };
 
+// Get Users
 const getUsers = async () => {
   try {
-    const users = await User.findAll({});
+    const users = await getAllUsers();
     return users || [];
   } catch (error) {
     throw error;
   }
 };
 
+// Update User
 const updateUser = async (id, name) => {
   try {
-    const [updated] = await User.update({ name, updatedAt: Date.now }, { where: { id } });
-    if (updated === 0) {
-      throw new Error("User not updated");
-    }
+    const user = await getUserById(id);
 
-    const updatedUser = await User.findOne({ where: { id } });
+    if (!user) {
+      throw new Error("User not found");
+    }
+    const updatedUser = await updateUserDetails(id,{
+      name,
+      updatedAt: new Date(),
+    });
+
     return updatedUser;
   } catch (error) {
     throw error;
   }
 };
 
+// Delete User
 const deleteUser = async (id) => {
   try {
-    const deleted = await User.destroy({ where: { id } });
-    if (deleted === 0) {
-      throw new Error("User not deleted");
-    }
-
-    return true;
+    await deleteUserDetails(id);
   } catch (error) {
     throw error;
   }
